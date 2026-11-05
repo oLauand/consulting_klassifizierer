@@ -10,11 +10,13 @@ Eine kleine Browser-Demo fuer **KI in der Beratungsbranche**. Texte eingeben, ei
 
 Der Starter erledigt automatisch:
 
-- Ollama pruefen und bei Bedarf ueber das offizielle Installationsskript installieren.
 - Eine kleine, gepruefte Python-Laufzeit in den Projektordner herunterladen. Eine eigene Python-Installation ist nicht erforderlich.
-- Den lokalen Ollama-Dienst starten.
-- Tev1 herunterladen, falls es noch fehlt.
-- Das Modell laden und die Demo im Standardbrowser oeffnen.
+- Den lokalen Demo-Server starten und die Demo sofort im Standardbrowser oeffnen.
+- Im Browser erscheint beim ersten Start eine Seite **Einmalige Einrichtung** mit Ladebalken, Downloadgroesse, Geschwindigkeit und geschaetzter Restzeit. Dort laeuft nacheinander:
+  1. Ollama pruefen und bei Bedarf herunterladen (offizieller Installer, Signaturpruefung) und ohne Administratorrechte installieren.
+  2. Das Modell Tev1 herunterladen, falls es noch fehlt.
+  3. Das Modell laden.
+- Sobald alles bereit ist, wechselt die Seite automatisch zur Demo. Bei einem Abbruch (z. B. Internet weg) gibt es den Knopf **Erneut versuchen**; Downloads werden fortgesetzt.
 
 **Beim ersten Start ist Internet erforderlich.** Ollama und das Modell zusammen benoetigen mehrere GB Download und Speicherplatz. Das kann einige Minuten dauern. Fuer Installation, Modell und Laufzeit mindestens 12 GB freien Speicher einplanen. Spaetere Starts verwenden die vorhandenen Dateien und funktionieren mit lokalem Modell auch ohne Internet. Es ist weder ein Ollama-Konto noch ein API-Schluessel erforderlich.
 
@@ -43,7 +45,7 @@ Die kleine Version wird ebenfalls automatisch heruntergeladen. Der Modellname st
 - `index.html`: Single-Page-Oberflaeche ohne externe Bibliotheken.
 - `server.py`: lokaler Python-Server; keine zusaetzlichen Python-Pakete.
 - `Start-Demo.cmd` / `Start-Demo.ps1`: Einrichtung und Start unter Windows.
-- `.runtime/`: automatisch erzeugte Laufzeit und lokale Protokolle, nicht in Git versioniert.
+- `.runtime/`: automatisch erzeugte Laufzeit und lokale Protokolle (`setup.log` beschreibt die Einrichtung), nicht in Git versioniert.
 
 Die Demo bindet nur an `127.0.0.1` und ist normalerweise unter `http://127.0.0.1:8787` erreichbar. Bei belegtem Port wird ein anderer lokaler Port gewaehlt. Eingabetexte und Antworten werden vom Demo-Server nicht gespeichert. Das Schliessen des Browserfensters beendet die Hintergrunddienste nicht. Ollama entlaedt das Modell nach der eingestellten Wartezeit.
 
